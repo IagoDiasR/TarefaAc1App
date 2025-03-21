@@ -7,6 +7,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,7 +42,42 @@ public class Exercicio3 extends AppCompatActivity {
         RadioButton radioG = findViewById(R.id.radioG);
         RadioButton radioM = findViewById(R.id.radioM);
         RadioButton radioP = findViewById(R.id.radioP);
+
+        String nome = editTextNome.getText().toString();
+        String idade = editTextIdade.getText().toString();
+        String telefone = editTextTelefone.getText().toString();
+        String email = editTextEmail.getText().toString();
+        String uf = spinnerUF.getSelectedItem().toString();
+        String cidade = spinnerCidade.getSelectedItem().toString();
+
+        String tamanho = "";
+        if (radioG.isChecked()) {
+            tamanho = "G";
+        } else if (radioM.isChecked()) {
+            tamanho = "M";
+        } else if (radioP.isChecked()) {
+            tamanho = "P";
+        }
+
+        StringBuilder cores = new StringBuilder();
+        if (checkBoxAzul.isChecked()) cores.append("Azul ");
+        if (checkBoxVermelho.isChecked()) cores.append("Vermelho ");
+        if (checkBoxVerde.isChecked()) cores.append("Verde ");
+
+        String mensagem = "Cadastro realizado com sucesso!\n" +
+                "Nome: " + nome + "\n" +
+                "Idade: " + idade + "\n" +
+                "Telefone: " + telefone + "\n" +
+                "Email: " + email + "\n" +
+                "UF: " + uf + "\n" +
+                "Cidade: " + cidade + "\n" +
+                "Tamanho: " + tamanho + "\n" +
+                "Cores: " + cores.toString();
+
+
+        Toast.makeText(getApplicationContext(), mensagem, Toast.LENGTH_LONG).show();
     }
+
     public void voltar (View view)
     {
         Intent intent = new Intent(this, MainActivity.class);

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,17 +26,34 @@ public class Exercicio5 extends AppCompatActivity {
         });
     }
 
-    public void preferencias(View view){
+    public void preferencias(View view) {
         CheckBox checkBox1 = findViewById(R.id.checkBoxNotificacoes);
         CheckBox checkBox2 = findViewById(R.id.checkBoxModoEscuro);
         CheckBox checkbox3 = findViewById(R.id.checkBoxLembrarLogin);
 
+        StringBuilder preferencias = new StringBuilder();
+        if (checkBox1.isChecked()) {
+            preferencias.append("Receber notificações");
+        }
+        if (checkBox2.isChecked()) {
+            preferencias.append("Modo Escuro");
+        }
+        if (checkbox3.isChecked()) {
+            preferencias.append("Lembrar Login");
+        }
 
+        if (preferencias.length() == 0) {
+            Toast.makeText(getApplicationContext(), "Nenhuma preferência foi escolhida.", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "Suas preferências foram salvas.\n" + preferencias.toString(), Toast.LENGTH_LONG).show();
+
+        }
     }
 
-    public void voltar (View view)
-    {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+
+        public void voltar (View view)
+        {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
     }
-}

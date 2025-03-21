@@ -38,6 +38,7 @@
         android:id="@+id/buttonSalvar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="preferencias"
         android:text="Salvar Preferências"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="72dp"

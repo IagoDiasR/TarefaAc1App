@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,16 +29,39 @@ public class Exercicio4 extends AppCompatActivity {
     }
 
     public void criarCheckBox (View view) {
-        EditText editTextNome2 = findViewById(R.id.editTextNome2);
+        EditText editTextNome4 = findViewById(R.id.editTextNome4);
         LinearLayout linearLayoutCheckBox = findViewById(R.id.layoutCheckboxes);
 
-        String nome = editTextNome2.getText().toString().trim();
+        String nome = editTextNome4.getText().toString().trim();
 
-            CheckBox checkBox = new CheckBox(this);
-            checkBox.setText(String.valueOf(nome.chars()));
-            linearLayoutCheckBox.addView(checkBox);
+        CheckBox checkBox = new CheckBox(this);
+        checkBox.setText(String.valueOf(nome.chars()));
+        linearLayoutCheckBox.addView(checkBox);
 
+        linearLayoutCheckBox.removeAllViews();
+
+        String nome4 = editTextNome4.getText().toString();
+        if (nome.isEmpty()) {
+            Toast.makeText(this, "Por favor, digite seu nome!", Toast.LENGTH_SHORT).show();
+            return;
         }
+
+
+        for (int i = 0; i < nome.length(); i++) {
+            char letra = nome.charAt(i);
+
+
+            CheckBox checkBox1 = new CheckBox(this);
+            checkBox.setText(String.valueOf(letra));
+            checkBox.setId(View.generateViewId());
+
+
+            linearLayoutCheckBox.addView(checkBox);
+        }
+
+    }
+
+
         public void voltar (View view)
         {
             Intent intent = new Intent(this, MainActivity.class);
